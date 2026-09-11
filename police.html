@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Dashboard | SafeReport</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🛡️ SafeReport Police
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Citizen</a>
+        <a href="police.html" class="active">Police</a>
+    </div>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<section class="page-header">
+
+    <h1>👮 Police Dashboard</h1>
+
+    <p>
+        Manage complaints, evidence and investigations.
+    </p>
+
+</section>
+
+
+<!-- DASHBOARD STATS -->
+
+<section class="police-stats">
+
+    <div class="police-stat-card">
+        <h2>124</h2>
+        <p>Total Complaints</p>
+    </div>
+
+    <div class="police-stat-card">
+        <h2>38</h2>
+        <p>Under Investigation</p>
+    </div>
+
+    <div class="police-stat-card">
+        <h2>71</h2>
+        <p>Resolved</p>
+    </div>
+
+    <div class="police-stat-card">
+        <h2>15</h2>
+        <p>High Priority</p>
+    </div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section class="search-section">
+
+    <input
+        type="text"
+        id="searchComplaint"
+        placeholder="Search Complaint ID..."
+    >
+
+</section>
+
+
+<!-- COMPLAINT TABLE -->
+
+<section class="complaints-section">
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Citizen</th>
+                    <th>Crime Type</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Evidence</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="complaintTable">
+
+                <tr>
+
+                    <td>CR-2026-1001</td>
+                    <td>Rahul Sharma</td>
+                    <td>Theft</td>
+
+                    <td>
+                        <span class="priority-high">
+                            High
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-progress">
+                            Investigating
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="view-btn">
+                            📎 View
+                        </button>
+                    </td>
+
+                    <td>
+
+                        <select class="status-select">
+
+                            <option>
+                                Investigating
+                            </option>
+
+                            <option>
+                                Pending
+                            </option>
+
+                            <option>
+                                Resolved
+                            </option>
+
+                        </select>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>CR-2026-1002</td>
+                    <td>Anita Verma</td>
+                    <td>Cyber Crime</td>
+
+                    <td>
+                        <span class="priority-medium">
+                            Medium
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-pending">
+                            Pending
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="view-btn">
+                            📎 View
+                        </button>
+                    </td>
+
+                    <td>
+
+                        <select class="status-select">
+
+                            <option>
+                                Pending
+                            </option>
+
+                            <option>
+                                Investigating
+                            </option>
+
+                            <option>
+                                Resolved
+                            </option>
+
+                        </select>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>CR-2026-1003</td>
+                    <td>Vikas Singh</td>
+                    <td>Assault</td>
+
+                    <td>
+                        <span class="priority-high">
+                            High
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status-resolved">
+                            Resolved
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="view-btn">
+                            📎 View
+                        </button>
+                    </td>
+
+                    <td>
+
+                        <select class="status-select">
+
+                            <option>
+                                Resolved
+                            </option>
+
+                            <option>
+                                Investigating
+                            </option>
+
+                            <option>
+                                Pending
+                            </option>
+
+                        </select>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- INVESTIGATION NOTES -->
+
+<section class="notes-section">
+
+    <div class="notes-card">
+
+        <h2>📝 Investigation Notes</h2>
+
+        <textarea
+            rows="6"
+            placeholder="Add investigation notes..."
+        ></textarea>
+
+        <button class="save-btn">
+            Save Notes
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h3>SafeReport Police Portal</h3>
+
+            <p>
+                Complaint Management System
+            </p>
+        </div>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="police.html">Dashboard</a>
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

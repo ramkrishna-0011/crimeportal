@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Evidence Upload | SafeReport</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🛡️ SafeReport
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="report.html">Report Crime</a>
+        <a href="track.html">Track Complaint</a>
+        <a href="dashboard.html">Dashboard</a>
+    </div>
+
+</nav>
+
+
+<!-- ================= PAGE HEADER ================= -->
+
+<section class="page-header">
+
+    <h1>Upload Evidence</h1>
+
+    <p>
+        Upload photos, videos, documents or other evidence
+        related to your complaint.
+    </p>
+
+</section>
+
+
+<!-- ================= EVIDENCE FORM ================= -->
+
+<section class="evidence-section">
+
+    <div class="evidence-container">
+
+        <h2>Evidence Submission</h2>
+
+        <p class="form-info">
+            Please provide accurate information about the evidence.
+        </p>
+
+
+        <form id="evidenceForm">
+
+            <!-- Complaint ID -->
+
+            <div class="form-group">
+
+                <label for="complaintId">
+                    Complaint ID
+                </label>
+
+                <input
+                    type="text"
+                    id="complaintId"
+                    placeholder="Example: CR-2026-00125"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Evidence Type -->
+
+            <div class="form-group">
+
+                <label for="evidenceType">
+                    Evidence Type
+                </label>
+
+                <select id="evidenceType" required>
+
+                    <option value="">
+                        Select Evidence Type
+                    </option>
+
+                    <option value="photo">
+                        📷 Photo
+                    </option>
+
+                    <option value="video">
+                        🎥 Video
+                    </option>
+
+                    <option value="document">
+                        📄 Document
+                    </option>
+
+                    <option value="audio">
+                        🎙️ Audio
+                    </option>
+
+                    <option value="other">
+                        📁 Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- File Upload -->
+
+            <div class="form-group">
+
+                <label for="evidenceFile">
+                    Select Evidence File
+                </label>
+
+                <input
+                    type="file"
+                    id="evidenceFile"
+                    accept="image/*,video/*,audio/*,.pdf,.doc,.docx"
+                    required
+                >
+
+                <small>
+                    Supported: JPG, PNG, PDF, DOC, MP4, MP3 etc.
+                </small>
+
+            </div>
+
+
+            <!-- File Preview -->
+
+            <div id="filePreview" class="file-preview">
+
+                <p>No file selected</p>
+
+            </div>
+
+
+            <!-- Description -->
+
+            <div class="form-group">
+
+                <label for="evidenceDescription">
+                    Evidence Description
+                </label>
+
+                <textarea
+                    id="evidenceDescription"
+                    rows="5"
+                    placeholder="Describe this evidence..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- Location -->
+
+            <div class="form-group">
+
+                <label for="evidenceLocation">
+                    Evidence Location
+                </label>
+
+                <input
+                    type="text"
+                    id="evidenceLocation"
+                    placeholder="Where was this evidence found?"
+                >
+
+            </div>
+
+
+            <!-- Date -->
+
+            <div class="form-group">
+
+                <label for="evidenceDate">
+                    Evidence Date
+                </label>
+
+                <input
+                    type="date"
+                    id="evidenceDate"
+                >
+
+            </div>
+
+
+            <!-- Declaration -->
+
+            <div class="checkbox-group">
+
+                <input
+                    type="checkbox"
+                    id="declaration"
+                    required
+                >
+
+                <label for="declaration">
+                    I confirm that the uploaded evidence is genuine
+                    and related to this complaint.
+                </label>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+                    📤 Upload Evidence
+                </button>
+
+                <button
+                    type="reset"
+                    class="btn-secondary"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <!-- Upload Message -->
+
+        <div
+            id="uploadMessage"
+            class="upload-message"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SECURITY INFORMATION ================= -->
+
+<section class="security-section">
+
+    <div class="security-card">
+
+        <h2>🔐 Evidence Security</h2>
+
+        <p>
+            Your uploaded evidence should only be related to the
+            submitted complaint. In the complete system, files will
+            be securely stored and access will be restricted to
+            authorized police personnel.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h3>SafeReport</h3>
+
+            <p>
+                Secure Crime Reporting & Tracking Portal
+            </p>
+        </div>
+
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="report.html">Report Crime</a>
+            <a href="track.html">Track Complaint</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Services</h3>
+
+            <a href="evidence.html">Evidence Upload</a>
+            <a href="#">Notifications</a>
+            <a href="#">Police Dashboard</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 SafeReport. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

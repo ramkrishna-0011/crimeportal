@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Crime Assistant</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.header{
+    background:#0d47a1;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.ai-section{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.chat-container{
+    flex:2;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+.chat-header{
+    background:#1565c0;
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+.chat-box{
+    height:450px;
+    overflow-y:auto;
+    padding:15px;
+}
+
+.message{
+    margin-bottom:15px;
+    padding:12px;
+    border-radius:10px;
+    max-width:80%;
+}
+
+.user{
+    background:#e3f2fd;
+    margin-left:auto;
+}
+
+.bot{
+    background:#eeeeee;
+}
+
+.input-area{
+    display:flex;
+    padding:15px;
+    border-top:1px solid #ddd;
+}
+
+.input-area input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.input-area button{
+    margin-left:10px;
+    padding:12px 20px;
+    border:none;
+    background:#1565c0;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.input-area button:hover{
+    background:#0d47a1;
+}
+
+.ai-tools{
+    flex:1;
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.tool-card{
+    background:#f8f9fa;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.tool-card h3{
+    color:#1565c0;
+    margin-bottom:10px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 10px;
+    background:red;
+    color:white;
+    border-radius:20px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🤖 AI Crime Assistant</h1>
+        <p>Get help for crime reporting and complaint guidance</p>
+    </div>
+
+    <div class="ai-section">
+
+        <!-- Chat Section -->
+        <div class="chat-container">
+
+            <div class="chat-header">
+                AI Assistant Chat
+            </div>
+
+            <div class="chat-box" id="chatBox">
+
+                <div class="message bot">
+                    Hello! How can I help you today?
+                </div>
+
+            </div>
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask about crime reporting..."
+                >
+
+                <button onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- AI Features -->
+        <div class="ai-tools">
+
+            <div class="tool-card">
+                <h3>Crime Category Prediction</h3>
+                <p id="prediction">Waiting for input...</p>
+            </div>
+
+            <div class="tool-card">
+                <h3>Urgency Detection</h3>
+                <p id="urgency">
+                    <span class="badge">Normal</span>
+                </p>
+            </div>
+
+            <div class="tool-card">
+                <h3>Smart Suggestions</h3>
+                <ul id="suggestions">
+                    <li>Provide detailed description</li>
+                    <li>Upload evidence</li>
+                    <li>Share exact location</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function sendMessage() {
+
+    let input = document.getElementById("userInput");
+    let text = input.value.trim();
+
+    if(text === "") return;
+
+    let chatBox = document.getElementById("chatBox");
+
+    let userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.innerText = text;
+    chatBox.appendChild(userMsg);
+
+    let reply = getAIResponse(text);
+
+    let botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+    botMsg.innerText = reply;
+    chatBox.appendChild(botMsg);
+
+    predictCrime(text);
+    detectUrgency(text);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+    input.value = "";
+}
+
+function getAIResponse(text){
+
+    text = text.toLowerCase();
+
+    if(text.includes("hack") || text.includes("cyber")){
+        return "This appears to be a Cyber Crime. Please report account details and attach screenshots.";
+    }
+
+    if(text.includes("theft") || text.includes("stolen")){
+        return "Please provide theft location, date, and item details.";
+    }
+
+    if(text.includes("harassment")){
+        return "Please describe the incident and upload supporting evidence.";
+    }
+
+    return "Thank you. Please provide more details so I can assist you better.";
+}
+
+function predictCrime(text){
+
+    let prediction = "General Complaint";
+
+    text = text.toLowerCase();
+
+    if(text.includes("hack") || text.includes("cyber")){
+        prediction = "Cyber Crime";
+    }
+    else if(text.includes("stolen") || text.includes("theft")){
+        prediction = "Theft";
+    }
+    else if(text.includes("harassment")){
+        prediction = "Harassment";
+    }
+
+    document.getElementById("prediction").innerHTML =
+        "<strong>" + prediction + "</strong>";
+}
+
+function detectUrgency(text){
+
+    text = text.toLowerCase();
+
+    let level = "Normal";
+
+    if(
+        text.includes("murder") ||
+        text.includes("kidnap") ||
+        text.includes("attack")
+    ){
+        level = "High Risk";
+    }
+
+    document.getElementById("urgency").innerHTML =
+        '<span class="badge">' + level + '</span>';
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Report Incident - SafeReport</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .form-container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-card h1 {
+            margin-bottom: 10px;
+        }
+
+        .form-card > p {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #d9412f;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            border: none;
+            background: #d9412f;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #b83224;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">🛡️</div>
+        <span>SafeReport</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">🏠 Home</a>
+
+        <a href="report.html" class="active">
+            📝 Report
+        </a>
+
+        <a href="track.html">
+            🔍 Track
+        </a>
+
+    </div>
+
+    <a href="login.html" class="login-btn">
+        Login / Register
+    </a>
+
+</nav>
+
+
+<div class="form-container">
+
+    <div class="form-card">
+
+        <h1>📝 Report an Incident</h1>
+
+        <p>
+            Provide accurate information about the incident.
+        </p>
+
+
+        <form id="reportForm">
+
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Incident Type</label>
+
+                <select required>
+
+                    <option value="">
+                        Select incident type
+                    </option>
+
+                    <option>Theft</option>
+
+                    <option>Fraud</option>
+
+                    <option>Cyber Crime</option>
+
+                    <option>Harassment</option>
+
+                    <option>Assault</option>
+
+                    <option>Missing Person</option>
+
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Incident Location</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter incident location"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Date of Incident</label>
+
+                <input
+                    type="date"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Describe the Incident</label>
+
+                <textarea
+                    placeholder="Describe what happened..."
+                    required>
+                </textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Upload Evidence</label>
+
+                <input
+                    type="file"
+                    multiple
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Submit Report
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document
+.getElementById("reportForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const caseId =
+        "SR-" +
+        Math.floor(100000 + Math.random() * 900000);
+
+    alert(
+        "Report submitted successfully!\n\n" +
+        "Your Case ID: " + caseId
+    );
+
+});
+
+</script>
+
+
+</body>
+
+</html>

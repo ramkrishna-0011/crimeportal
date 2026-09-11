@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Citizen Dashboard | Crime Portal</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          <link rel="stylesheet" href="dashboard.css">
+
+          <script src="dashboard.js"></script>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+            <h2>Crime<span>Portal</span></h2>
+            <small>Citizen Services</small>
+        </div>
+    </div>
+
+    <nav class="menu">
+
+        <a href="dashboard.html" class="menu-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="report-crime.html" class="menu-item">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            <span>Report Crime</span>
+        </a>
+
+        <a href="complaints.html" class="menu-item">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>My Complaints</span>
+        </a>
+
+        <a href="evidence.html" class="menu-item">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <span>Evidence</span>
+        </a>
+
+        <a href="notifications.html" class="menu-item">
+            <i class="fa-solid fa-bell"></i>
+            <span>Notifications</span>
+            <span class="notification-count">3</span>
+        </a>
+
+        <a href="#" class="menu-item">
+            <i class="fa-solid fa-user"></i>
+            <span>My Profile</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="#" class="menu-item">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Help & Support</span>
+        </a>
+
+        <button class="logout-btn" onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main-content">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div class="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="page-title">
+            <h1>Citizen Dashboard</h1>
+            <p>Manage your complaints and track their progress.</p>
+        </div>
+
+        <div class="top-actions">
+
+            <button class="notification-btn" onclick="openNotifications()">
+                <i class="fa-solid fa-bell"></i>
+                <span class="notification-dot"></span>
+            </button>
+
+            <div class="profile">
+
+                <div class="profile-image">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="profile-info">
+                    <strong id="userName">Ram Krishna</strong>
+                    <small>Citizen</small>
+                </div>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= WELCOME ================= -->
+
+    <section class="welcome-card">
+
+        <div class="welcome-text">
+
+            <span class="welcome-label">
+                <i class="fa-solid fa-hand-wave"></i>
+                Welcome back
+            </span>
+
+            <h2>Hello, <span id="welcomeName">Ram Krishna</span>!</h2>
+
+            <p>
+                Stay updated with your complaints and report incidents
+                quickly and securely.
+            </p>
+
+            <a href="report-crime.html" class="primary-btn">
+                <i class="fa-solid fa-plus"></i>
+                Report a Crime
+            </a>
+
+        </div>
+
+        <div class="welcome-icon">
+            <i class="fa-solid fa-shield-heart"></i>
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+            <div>
+                <h2>Complaint Overview</h2>
+                <p>Your complaint statistics</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+
+            <!-- TOTAL -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon total">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <div class="stat-content">
+                    <span>Total Complaints</span>
+                    <h3 id="totalComplaints">12</h3>
+                    <small>
+                        <i class="fa-solid fa-arrow-up"></i>
+                        8% from last month
+                    </small>
+                </div>
+
+            </div>
+
+
+            <!-- PENDING -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon pending">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <div class="stat-content">
+                    <span>Pending</span>
+                    <h3 id="pendingComplaints">4</h3>
+                    <small>Awaiting verification</small>
+                </div>
+
+            </div>
+
+
+            <!-- INVESTIGATION -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon investigation">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <div class="stat-content">
+                    <span>Under Investigation</span>
+                    <h3 id="investigationComplaints">5</h3>
+                    <small>Currently being investigated</small>
+                </div>
+
+            </div>
+
+
+            <!-- RESOLVED -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon resolved">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div class="stat-content">
+                    <span>Resolved</span>
+                    <h3 id="resolvedComplaints">3</h3>
+                    <small>Successfully resolved</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= QUICK ACTIONS ================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Quick Actions</h2>
+                <p>Access important services quickly</p>
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+            <a href="report-crime.html" class="action-card">
+
+                <div class="action-icon">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                </div>
+
+                <div>
+                    <h3>Report Crime</h3>
+                    <p>Submit a new complaint</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-right action-arrow"></i>
+
+            </a>
+
+
+            <a href="complaints.html" class="action-card">
+
+                <div class="action-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div>
+                    <h3>Track Complaint</h3>
+                    <p>Check your complaint status</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-right action-arrow"></i>
+
+            </a>
+
+
+            <a href="evidence.html" class="action-card">
+
+                <div class="action-icon">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+
+                <div>
+                    <h3>Upload Evidence</h3>
+                    <p>Add evidence to your case</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-right action-arrow"></i>
+
+            </a>
+
+
+            <a href="notifications.html" class="action-card">
+
+                <div class="action-icon">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+
+                <div>
+                    <h3>Notifications</h3>
+                    <p>View latest updates</p>
+                </div>
+
+                <i class="fa-solid fa-arrow-right action-arrow"></i>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RECENT COMPLAINTS ================= -->
+
+    <section class="complaints-section">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Recent Complaints</h2>
+                <p>Your latest submitted complaints</p>
+            </div>
+
+            <a href="complaints.html" class="view-all">
+                View All
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Crime Type</th>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="complaintsTable">
+
+                    <tr>
+
+                        <td>
+                            <strong>#CR-1025</strong>
+                        </td>
+
+                        <td>
+                            Theft
+                        </td>
+
+                        <td>
+                            Bhopal
+                        </td>
+
+                        <td>
+                            28 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="status investigating">
+                                Under Investigation
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="view-btn"
+                                    onclick="viewComplaint('CR-1025')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#CR-1024</strong>
+                        </td>
+
+                        <td>
+                            Cyber Crime
+                        </td>
+
+                        <td>
+                            Bhopal
+                        </td>
+
+                        <td>
+                            25 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="status pending">
+                                Pending
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="view-btn"
+                                    onclick="viewComplaint('CR-1024')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#CR-1018</strong>
+                        </td>
+
+                        <td>
+                            Fraud
+                        </td>
+
+                        <td>
+                            Indore
+                        </td>
+
+                        <td>
+                            15 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="status resolved">
+                                Resolved
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="view-btn"
+                                    onclick="viewComplaint('CR-1018')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#CR-1012</strong>
+                        </td>
+
+                        <td>
+                            Harassment
+                        </td>
+
+                        <td>
+                            Bhopal
+                        </td>
+
+                        <td>
+                            05 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="status resolved">
+                                Resolved
+                            </span>
+                        </td>
+
+                        <td>
+                            <button class="view-btn"
+                                    onclick="viewComplaint('CR-1012')">
+                                View
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Crime Reporting & Tracking Portal.
+            All rights reserved.
+        </p>
+
+        <div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Help</a>
+        </div>
+
+    </footer>
+
+</main>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

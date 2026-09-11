@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Track Case - SafeReport</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .track-container {
+            max-width: 700px;
+            margin: 70px auto;
+            padding: 20px;
+        }
+
+        .track-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .track-card h1 {
+            margin-bottom: 10px;
+        }
+
+        .track-card p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .track-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .track-input input {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .track-input button {
+            background: #d9412f;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .case-result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #f8f8f8;
+        }
+
+        .status {
+            display: inline-block;
+            background: #fff1cc;
+            color: #8a6500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        @media(max-width:600px) {
+
+            .track-input {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🛡️
+        </div>
+
+        <span>SafeReport</span>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            🏠 Home
+        </a>
+
+        <a href="report.html">
+            📝 Report
+        </a>
+
+        <a href="track.html" class="active">
+            🔍 Track
+        </a>
+
+    </div>
+
+
+    <a href="login.html" class="login-btn">
+        Login / Register
+    </a>
+
+</nav>
+
+
+
+<div class="track-container">
+
+    <div class="track-card">
+
+        <h1>🔍 Track Your Case</h1>
+
+        <p>
+            Enter your Case ID to view the current status
+            of your complaint.
+        </p>
+
+
+        <div class="track-input">
+
+            <input
+                type="text"
+                id="caseId"
+                placeholder="Example: SR-123456"
+            >
+
+            <button onclick="trackCase()">
+                Track Case
+            </button>
+
+        </div>
+
+
+        <div
+            id="caseResult"
+            class="case-result">
+
+            <h3>Case Information</h3>
+
+            <br>
+
+            <p>
+                Case ID:
+                <strong id="displayCase"></strong>
+            </p>
+
+            <p>
+                Incident Type:
+                <strong>Theft</strong>
+            </p>
+
+            <p>
+                Assigned Officer:
+                <strong>Officer Sharma</strong>
+            </p>
+
+            <p>
+                Status:
+                <span class="status">
+                    Under Investigation
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+function trackCase() {
+
+    const caseId =
+        document.getElementById("caseId").value;
+
+    if(caseId.trim() === "") {
+
+        alert("Please enter your Case ID.");
+
+        return;
+    }
+
+
+    document
+        .getElementById("caseResult")
+        .style.display = "block";
+
+
+    document
+        .getElementById("displayCase")
+        .innerText = caseId;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
